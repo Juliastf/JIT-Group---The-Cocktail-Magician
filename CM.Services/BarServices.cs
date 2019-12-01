@@ -120,20 +120,20 @@ namespace CM.Services
             var newBar = barDTO.MapBarDTOToBar();                  // to be tested in MapperTests
             var newAddress = barDTO.MapBarDTOToAddress();          // to be tested in MapperTests
             newBar.Address = newAddress;
-            await _context.Bars.AddAsync(newBar).ConfigureAwait(false);
+            _context.Bars.Add(newBar);
             await _context.SaveChangesAsync();
             var coctailsInBar = barDTO.Cocktails.Select(c => c.MapToCocktailModel()).ToList();
 
             foreach (var cocktail in coctailsInBar)
             {
-                await AddCocktailToBar(cocktail, newBar);
+                AddCocktailToBar(cocktail, newBar);
             }
 
             await _context.SaveChangesAsync();
             return newBar.Name;
         }
 
-        public async Task AddCocktailToBar(Cocktail cocktail, Bar bar) //tested
+        public void AddCocktailToBar(Cocktail cocktail, Bar bar) //tested
         {
             cocktail.ValidateIfNull(ExceptionMessages.CocktailNull);
             bar.ValidateIfNull(ExceptionMessages.BarNull);
@@ -164,7 +164,7 @@ namespace CM.Services
             var coctailsInBar = barDto.Cocktails.Select(c => c.MapToCocktailModel()).ToList();
             foreach (var cocktail in coctailsInBar)
             {
-                await AddCocktailToBar(cocktail, barToEdit);
+                AddCocktailToBar(cocktail, barToEdit);
             }
 
             await _context.SaveChangesAsync();
