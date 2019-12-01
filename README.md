@@ -26,10 +26,11 @@ The search is performed through:
 =>	Cocktails: by Name, Ingredient/s and Rating;
 All views that list entities use server-side pagination and more results are loaded with Ajax.
 
-The business logic of the project has been test with unit tests to ensure the smooth flow of the provided functionality. 
+The business logic of the project has been tested with unit tests to ensure the smooth flow of the provided functionality. 
 
 All possible errors are handled with messages and  custom error pages.
 
 A quick contact form is implemented, to grant the possibilities to visitor to send messages to the administrator.
 
 The system was developed by Julia Stoimenova and Todor Karamfilov
+
